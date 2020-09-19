@@ -1,14 +1,13 @@
 /*
- --- Turn to Face ---
- Select one or more tokens to be the turners. Target one token to be the target.
- Whenever the turner or the target move, the turner will rotate to face the target.
+--- Turn to Face ---
+Select one or more tokens to be the turners. Target one token to be the target.
+Whenever the turner or the target move, the turner will rotate to face the target.
+(does not persist if you reload)
 
- (does not persist if you reload)
-
- source:
- https://github.com/itamarcu/foundry-macros/blob/master/turn-to-face.js
- suggested icon:
- https://i.imgur.com/HWWHd2W.png
+source:
+https://github.com/itamarcu/foundry-macros/blob/master/turn-to-face.js
+suggested icon:
+https://i.imgur.com/HWWHd2W.png
 */
 
 const circle = 2 * Math.PI
@@ -18,7 +17,7 @@ const hook_data_key = 'hook_id_for_turn_to_face'
 
 main()
 
-function main() {
+function main () {
   if (canvas.tokens.controlled.length === 0) {
     return ui.notifications.error('You need to select at least one token to be the turner.')
   }
