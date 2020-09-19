@@ -2,6 +2,9 @@
  --- makeTableResultBold ---
  Converts text from crit tables to make the first sentence bold
 
+ args:
+   0 - text to make bold
+
  source:
  https://github.com/itamarcu/foundry-macros/blob/master/makeTableResultBold.js
  suggested icon:
