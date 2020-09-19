@@ -8,9 +8,6 @@
    2  - callback to be called with selected option or null:
    3+ - options
 
- depends on:
-   error
-
  source:
  https://github.com/itamarcu/foundry-macros/blob/master/queryFromList.js
  suggested icon:
@@ -23,7 +20,8 @@ const callback = args[2]
 const queryOptions = args.slice(3)
 
 if (!queryTitle || !queryText || !callback || !queryOptions) {
-    game.macros.getName("error").renderContent("Arguments should be (queryTitle, queryText, callback, ...queryOptions)")
+    console.error("queryFromList arguments should be (queryTitle, queryText, callback, ...queryOptions)")
+    ui.notifications.error("queryFromList arguments should be (queryTitle, queryText, callback, ...queryOptions)")
     return
 }
 
