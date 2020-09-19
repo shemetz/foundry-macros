@@ -3,9 +3,9 @@
 This will spend your highest remaining hit die, rolling it and showing the result in the chat (not adding Constitution).
 
 source:
-https://github.com/itamarcu/foundry-macros/blob/master/queryFromList.js
+https://github.com/itamarcu/foundry-macros/blob/master/spend-hit-die.js
 suggested icon:
-https://i.imgur.com/iw4sH39.png
+https://reprog.files.wordpress.com/2011/01/1d8.png
  */
 
 const classes = actor.data.items.filter(it => { return it.type === 'class' })
