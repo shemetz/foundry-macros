@@ -5,8 +5,10 @@
 
  (does not persist if you reload)
 
+ source:
  https://github.com/itamarcu/foundry-macros/blob/master/turn-to-face.js
- -- made by shem#0226
+ suggested icon:
+ https://i.imgur.com/HWWHd2W.png
 */
 
 const circle = 2 * Math.PI
