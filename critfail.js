@@ -3,7 +3,7 @@
 Rolls and shows a result from the Critical Fail table (required as a rollable table)
 
 depends on:
-  makeTableResultBold
+  make-table-result-bold
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/critfail.js
@@ -17,6 +17,6 @@ const roll = table.roll()
 
 const rollPart = roll.roll
 const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-resultPart.text = game.macros.getName('makeTableResultBold').renderContent(resultPart.text)
+resultPart.text = game.macros.getName('make-table-result-bold').renderContent(resultPart.text)
 
 table.draw({ roll: rollPart, results: [resultPart] })

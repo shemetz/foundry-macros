@@ -3,8 +3,8 @@
 Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names)
 
 depends on:
-  queryFromList
-  makeTableResultBold
+  query-from-list
+  make-table-result-bold
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/crit-dialog.js
@@ -20,11 +20,11 @@ const callback = (tableName) => {
   const roll = table.roll()
   const rollPart = roll.roll
   const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-  resultPart.text = game.macros.getName('makeTableResultBold').renderContent(resultPart.text)
+  resultPart.text = game.macros.getName('make-table-result-bold').renderContent(resultPart.text)
   table.draw({ roll: rollPart, results: [resultPart] })
 }
 
-game.macros.getName('queryFromList').renderContent(
+game.macros.getName('query-from-list').renderContent(
   'Critical Hit',
   'Choose critical type:',
   callback,

@@ -3,7 +3,7 @@
 Will open two dialogs, for the user to set light and vision for the selected token.
 
 depends on:
-  queryFromList
+  query-from-list
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/setup-light-and-vision.js
@@ -59,14 +59,14 @@ const setLight = (lightStr) => {
 
 const selectedTokenNames = canvas.tokens.controlled.map((it) => {return it.name}).join(', ')
 
-game.macros.getName('queryFromList').renderContent(
+game.macros.getName('query-from-list').renderContent(
   'Selected tokens: ' + selectedTokenNames,
   'Vision:',
   setVision,
   ...Object.keys(VISION_OPTIONS)
 )
 
-game.macros.getName('queryFromList').renderContent(
+game.macros.getName('query-from-list').renderContent(
   'Selected tokens: ' + selectedTokenNames,
   'Light:',
   setLight,

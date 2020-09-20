@@ -1,13 +1,13 @@
 /*
---- recklessCast ---
+--- reckless-cast ---
 A macro created for my character, Shent, who casts random spells as a modified UA invention/chaos wizard.
 
 should be called by a macro per spell level, e.g.:
-  game.macros.getName("recklessCast").renderContent(3, false)
+  game.macros.getName("reckless-cast").renderContent(3, false)
 
 
 source:
-https://github.com/itamarcu/foundry-macros/blob/master/recklessCast.js
+https://github.com/itamarcu/foundry-macros/blob/master/reckless-cast.js
 suggested icon:
 https://i.imgur.com/iw4sH39.png
 and for the reckless casts themselves, use the ones I created here:
@@ -142,7 +142,7 @@ for (const roll of rolls) {
       type: messageType
     })
     $(`#chat-log`).on('click', `#${randomId}`, ev => {
-      game.macros.getName('recklessCast').renderContent(level, true)
+      game.macros.getName('reckless-cast').renderContent(level, true)
     })
   } else if (rollNum === 10 && isDoublecast && rolls.length === 2) {
     await ChatMessage.create({
@@ -193,7 +193,7 @@ for (const roll of rolls) {
     })
     // putting onclick directly on message doesn't work; see https://discordapp.com/channels/170995199584108546/554492873190670336/698992111688613900
     $(`#chat-log`).on('click', `#${randomId}`, ev => {
-      console.log('recklessCast ~ onClick for ', spell.name)
+      console.log('reckless-cast ~ onClick for ', spell.name)
       BetterRolls.quickRollByName('Shent', spell.name)
     })
   }

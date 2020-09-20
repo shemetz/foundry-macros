@@ -59,10 +59,10 @@ Whenever the turner or the target move, the turner will rotate to face the targe
 
 ![](https://user-images.githubusercontent.com/6516621/93661817-95ca7080-fa63-11ea-87cd-133eb5d576fc.gif)
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/makeTableResultBold](makeTableResultBold.js) (5e homebrew) 
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/make-table-result-bold](make-table-result-bold.js) (5e homebrew) 
 Converts text from crit tables to make the first sentence bold.
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/queryFromList](queryFromList.js) 
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/query-from-list](query-from-list.js) 
 Will open a dialog for the user to select an option, and call a callback when it's complete.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/error](error.js) 
@@ -74,5 +74,5 @@ Allows using /me to type italics text.
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/crit](crit.js) (5e homebrew)
 Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names).and call a callback when it's complete.
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/recklessCast](recklessCast.js) (5e homebrew)
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/reckless-cast](reckless-cast.js) (5e homebrew)
 A macro created for my character, Shent, who casts random spells as a modified UA invention/chaos wizard.

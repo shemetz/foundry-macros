@@ -1,5 +1,5 @@
 /*
---- queryFromList ---
+--- query-from-list ---
 Will open a dialog for the user to select an option, and call a callback when it's complete.
 
 args:
@@ -9,7 +9,7 @@ args:
   3+ - options
 
 source:
-https://github.com/itamarcu/foundry-macros/blob/master/queryFromList.js
+https://github.com/itamarcu/foundry-macros/blob/master/query-from-list.js
 suggested icon:
 https://i.imgur.com/iw4sH39.png
 */
@@ -20,8 +20,8 @@ const callback = args[2]
 const queryOptions = args.slice(3)
 
 if (!queryTitle || !queryText || !callback || !queryOptions) {
-  console.error('queryFromList arguments should be (queryTitle, queryText, callback, ...queryOptions)')
-  ui.notifications.error('queryFromList arguments should be (queryTitle, queryText, callback, ...queryOptions)')
+  console.error('query-from-list arguments should be (queryTitle, queryText, callback, ...queryOptions)')
+  ui.notifications.error('query-from-list arguments should be (queryTitle, queryText, callback, ...queryOptions)')
   return
 }
 
