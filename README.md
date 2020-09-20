@@ -56,7 +56,7 @@ Whenever the turner or the target move, the turner will rotate to face the targe
 ### <img src=https://i.imgur.com/huPpJQf.png height="24"> [Crit Fail Table](critfail.js) (5e homebrew) 
 Rolls and shows a result from the Critical Fail table (required as a rollable table)
 
-### <img src=https://i.imgur.com/huPpJQf.png height="24"> [Crit Table](crit-dialog.js) (5e homebrew)
+### <img src=https://i.imgur.com/Pr6tXUH.png height="24"> [Crit Table](crit-dialog.js) (5e homebrew)
 Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names)
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/query-from-list](query-from-list.js) 
