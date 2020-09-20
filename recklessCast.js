@@ -1,6 +1,6 @@
 /*
 --- recklessCast ---
-used for my character Shent!
+A macro created for my character, Shent, who casts random spells as a modified UA invention/chaos wizard.
 
 should be called by a macro per spell level, e.g.:
   game.macros.getName("recklessCast").renderContent(3, false)

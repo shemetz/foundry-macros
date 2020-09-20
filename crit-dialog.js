@@ -1,5 +1,5 @@
 /*
---- crit-dialog ---
+--- Crit Table ---
 Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names)
 
 depends on:

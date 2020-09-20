@@ -1,6 +1,9 @@
 /*
 --- critfail ---
-Rolls and shows a result from the Critical Fail table
+Rolls and shows a result from the Critical Fail table (required as a rollable table)
+
+depends on:
+  makeTableResultBold
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/critfail.js

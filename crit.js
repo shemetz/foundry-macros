@@ -13,7 +13,7 @@ depends on:
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/crit.js
 suggested icon:
-https://i.imgur.com/Pr6tXUH.png
+https://i.imgur.com/iw4sH39.png
 */
 
 const input0 = args[0]
