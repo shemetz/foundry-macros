@@ -33,6 +33,12 @@ Flips the selected token image along the X axis.
 ### <img src=https://i.imgur.com/VfsnMXH.png height="24"> [Setup Light/Vision](setup-light-and-vision.js) 
 Will open two dialogs, for the user to set light and vision for the selected token.
 
+### <img src=https://i.imgur.com/Wrt5uIE.png height="24"> [Show Names, Hide Bars](show-names-hide-bars.js) 
+For all selected tokens, names will be shown and bars will be hidden.
+
+### <img src=https://i.imgur.com/R8klQVl.png height="24"> [Hide Names, Hide Bars](hide-names-hide-bars.js) 
+For all selected tokens, names will be hidden (except owner hover) and bars will be hidden.
+
 ### <img src=https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/252/framed-picture_1f5bc.png height="24"> [Show Artwork](show-artwork.js) 
 Show artwork of selected token to yourself (GM can show to all players).
 
