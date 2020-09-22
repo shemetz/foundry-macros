@@ -1,5 +1,5 @@
 /*
---- Show Names, Hide Bars ---
+--- Hide Names, Hide Bars ---
 For all selected tokens, names will be hidden (except owner hover) and bars will be hidden.
 
 source:
