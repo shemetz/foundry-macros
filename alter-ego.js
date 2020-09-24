@@ -1,5 +1,5 @@
 /*
---- Alter Ego ---
+--- Alter Ego --- (deprecated by Token Image Swap)
 Changes a selected token's image to the next one in a circular sequence.
 You should edit the OPTIONS constant to use your own URLs.
 

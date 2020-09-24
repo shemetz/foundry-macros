@@ -11,11 +11,11 @@ Some others have dependencies, which means that they require these other macros 
  
 ## List + Summaries
 
+### <img src=https://i.imgur.com/X2mAfEC.png height="24"> [Token Image Swap](token-image-swap.js) 
+Changes a selected token's image to the next one in a custom sequence.
+
 ### <img src=https://static.thenounproject.com/png/232484-200.png height="24"> [Swap Positions](swap-positions.js) 
 Swap two selected tokens' places.
-
-### <img src=https://cdn.discordapp.com/attachments/695387569650663535/720012953172181022/Untitled.png height="24"> [Alter Ego](alter-ego.js) 
-Changes a selected token's image to the next one in a circular sequence.
 
 ## <img src=https://game-icons.net/icons/ffffff/000000/1x1/delapouite/broom.svg height="24"> [Clear Conditions](clear-conditions.js) 
 Clear all conditions from all selected tokens.
