@@ -17,7 +17,8 @@ https://i.imgur.com/X2mAfEC.png
 */
 
 const SCOPE = 'world'
-const KEY_NAME = 'token-image-swap'
+const KEY_OPTIONS = 'token-image-swap'
+const KEY_CURRENT_INDEX = 'token-image-swap_index'
 
 main()
 
@@ -27,9 +28,9 @@ function main () {
   const actor = tok.actor
   if (!actor) return ui.notifications.error('Cannot apply macro to tokens without an actor.')
   if (game.keyboard._downKeys.has('Control')) return setupTokenImages(tok)
-  if (actor.getFlag(SCOPE, KEY_NAME) === undefined || actor.getFlag(SCOPE, KEY_NAME).length === 0)
+  if (actor.getFlag(SCOPE, KEY_OPTIONS) === undefined || actor.getFlag(SCOPE, KEY_OPTIONS).length === 0)
     return ui.notifications.error('Please hold the Ctrl key while activating this macro, to set up images.')
-  const imagesText = actor.data.flags[SCOPE][KEY_NAME]
+  const imagesText = actor.data.flags[SCOPE][KEY_OPTIONS]
   const options = imagesText.split('\n')
     .map(it => it.split('#')[0].trim())  // remove comments
     .filter(it => it)  // remove empty lines
@@ -39,18 +40,19 @@ function main () {
     .map(it => it.split(' ')[1] || '1.0')
     .map(it => parseFloat(it))
   const currImg = tok.data.img
-  const imgIndex = optionImgs.indexOf(currImg)
-  if (imgIndex === -1) return ui.notifications.error('Token image is not one of the URLs in the script!')
+  let imgIndex = actor.getFlag(SCOPE, KEY_CURRENT_INDEX) || 0  // || 0 is for backwards compatibility
+  if (!(0 <= imgIndex && imgIndex < options.length)) imgIndex = 0
   const delta = game.keyboard._downKeys.has('Alt') ? -1 : +1
   const nextIndex = (imgIndex + delta + options.length) % options.length
   const nextImg = optionImgs[nextIndex]
   const nextScale = optionScales[nextIndex]
   tok.update({ 'img': nextImg, 'scale': nextScale })
+  tok.actor.setFlag(SCOPE, KEY_CURRENT_INDEX, nextIndex)
 }
 
 function setupTokenImages (tok) {
   const actor = tok.actor
-  let existingUrlsValue = actor.getFlag(SCOPE, KEY_NAME) || ''
+  let existingUrlsValue = actor.getFlag(SCOPE, KEY_OPTIONS) || ''
   if (existingUrlsValue && !existingUrlsValue.endsWith('\n')) existingUrlsValue += '\n'
   if (!existingUrlsValue.includes(tok.data.img)) {
     // add current to list
@@ -71,7 +73,8 @@ function setupTokenImages (tok) {
         label: 'Set images',
         callback: (html) => {
           const urlsText = html.find('#urls-text')[0].value
-          actor.setFlag(SCOPE, KEY_NAME, urlsText)
+          actor.setFlag(SCOPE, KEY_OPTIONS, urlsText)
+          if (actor.getFlag(SCOPE, KEY_CURRENT_INDEX) === undefined) tok.actor.setFlag(SCOPE, KEY_CURRENT_INDEX, 0)
           existingUrlsValue = urlsText
           console.log(`Token Image Swap | setting image list for ${actor.name}: ${urlsText}`)
         }
