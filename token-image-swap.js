@@ -1,8 +1,14 @@
 /*
 --- Token Image Swap ---
-Changes a selected token's image to the next one in a custom sequence.
+Changes a selected token's image to the next one in a custom sequence. Can also change scale.
 Hold Ctrl when executing the macro to set the images.
 Hold Alt when executing the macro to switch to the previous image in the sequence, instead.
+
+When setting images, the format is:
+
+  [image_link] [scale]? # [comment]?
+
+scale is 1 by default, if omitted.
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/token-image-swap.js
@@ -25,14 +31,21 @@ function main () {
     return ui.notifications.error('Please hold the Ctrl key while activating this macro, to set up images.')
   const imagesText = actor.data.flags[SCOPE][KEY_NAME]
   const options = imagesText.split('\n')
-    .map(it => it.split(' ')[0])  // remove comments
+    .map(it => it.split('#')[0].trim())  // remove comments
     .filter(it => it)  // remove empty lines
+  const optionImgs = options
+    .map(it => it.split(' ')[0])
+  const optionScales = options
+    .map(it => it.split(' ')[1] || '1.0')
+    .map(it => parseFloat(it))
   const currImg = tok.data.img
-  const imgIndex = options.indexOf(currImg)
+  const imgIndex = optionImgs.indexOf(currImg)
   if (imgIndex === -1) return ui.notifications.error('Token image is not one of the URLs in the script!')
-  const delta = game.keyboard._downKeys.has('Alt') ? options.length - 1 : 1
-  const nextImg = options[(imgIndex + delta) % options.length]
-  tok.update({ 'img': nextImg })
+  const delta = game.keyboard._downKeys.has('Alt') ? -1 : +1
+  const nextIndex = (imgIndex + delta + options.length) % options.length
+  const nextImg = optionImgs[nextIndex]
+  const nextScale = optionScales[nextIndex]
+  tok.update({ 'img': nextImg, 'scale': nextScale })
 }
 
 function setupTokenImages (tok) {
@@ -41,9 +54,9 @@ function setupTokenImages (tok) {
   if (existingUrlsValue && !existingUrlsValue.endsWith('\n')) existingUrlsValue += '\n'
   if (!existingUrlsValue.includes(tok.data.img)) {
     // add current to list
-    existingUrlsValue += tok.data.img + '    ' + tok.name + '\n'
+    existingUrlsValue += tok.data.img + ' ' + tok.data.scale + '   # ' + tok.name + '\n'
   }
-  new Dialog({
+  const dialog = new Dialog({
     title: `Token Image Swap - image list for ${actor.name}`,
     content: `
      <p>Please put image links here, each in a new line. You can add comments after URLs by adding 
@@ -73,5 +86,7 @@ function setupTokenImages (tok) {
     },
     // NO DEFAULT - on purpose, to allow Enter key in text input
     // default: 'one',
-  }).render(true)
+  })
+  dialog.position.width = 500
+  dialog.render(true)
 }
