@@ -12,6 +12,6 @@ main()
 
 async function main () {
   for (const token of canvas.tokens.controlled) {
-    await token.update({ 'effects': [] })
+    await token.update({ 'effects': [], 'overlayEffect': '' })
   }
 }
