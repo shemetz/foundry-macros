@@ -14,6 +14,9 @@ Some others have dependencies, which means that they require these other macros 
 ### <img src=https://i.imgur.com/X2mAfEC.png height="24"> [Token Image Swap](token-image-swap.js) 
 Changes a selected token's image to the next one in a custom sequence.
 
+### <img src=https://i.imgur.com/YptofqA.png height="24"> [Anime Attack](anime-attack.js) 
+Changes the name and image of an upcoming attack to be more anime, e.g. "Scorpion Assault!"
+
 ### <img src=https://static.thenounproject.com/png/232484-200.png height="24"> [Swap Positions](swap-positions.js) 
 Swap two selected tokens' places.
 
