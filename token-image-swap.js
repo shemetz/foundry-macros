@@ -22,20 +22,25 @@ const KEY_CURRENT_INDEX = 'token-image-swap_index'
 
 main()
 
-function main () {
+function main() {
   const tok = canvas.tokens.controlled[0]
-  if (tok === undefined) return ui.notifications.error('No token selected for Token Image Swap!')
+  if (tok === undefined)
+    return ui.notifications.error('No token selected for Token Image Swap!')
   const actor = tok.actor
-  if (!actor) return ui.notifications.error('Cannot apply macro to tokens without an actor.')
+  if (!actor)
+    return ui.notifications.error('Cannot apply macro to tokens without an actor.')
   if (game.keyboard._downKeys.has('Control')) return setupTokenImages(tok)
-  if (actor.getFlag(SCOPE, KEY_OPTIONS) === undefined || actor.getFlag(SCOPE, KEY_OPTIONS).length === 0)
-    return ui.notifications.error('Please hold the Ctrl key while activating this macro, to set up images.')
+  if (
+    actor.getFlag(SCOPE, KEY_OPTIONS) === undefined ||
+    actor.getFlag(SCOPE, KEY_OPTIONS).length === 0
+  )
+    return ui.notifications.error(
+      'Please hold the Ctrl key while activating this macro, to set up images.')
   const imagesText = actor.data.flags[SCOPE][KEY_OPTIONS]
   const options = imagesText.split('\n')
     .map(it => it.split('#')[0].trim())  // remove comments
     .filter(it => it)  // remove empty lines
-  const optionImgs = options
-    .map(it => it.split(' ')[0])
+  const optionImgs = options.map(it => it.split(' ')[0])
   const optionScales = options
     .map(it => it.split(' ')[1] || '1.0')
     .map(it => parseFloat(it))
@@ -46,14 +51,15 @@ function main () {
   const nextIndex = (imgIndex + delta + options.length) % options.length
   const nextImg = optionImgs[nextIndex]
   const nextScale = optionScales[nextIndex]
-  tok.update({ 'img': nextImg, 'scale': nextScale })
+  tok.update({'img': nextImg, 'scale': nextScale})
   tok.actor.setFlag(SCOPE, KEY_CURRENT_INDEX, nextIndex)
 }
 
-function setupTokenImages (tok) {
+function setupTokenImages(tok) {
   const actor = tok.actor
   let existingUrlsValue = actor.getFlag(SCOPE, KEY_OPTIONS) || ''
-  if (existingUrlsValue && !existingUrlsValue.endsWith('\n')) existingUrlsValue += '\n'
+  if (existingUrlsValue && !existingUrlsValue.endsWith('\n'))
+    existingUrlsValue += '\n'
   if (!existingUrlsValue.includes(tok.data.img)) {
     // add current to list
     existingUrlsValue += tok.data.img + ' ' + tok.data.scale + '   # ' + tok.name + '\n'
@@ -74,18 +80,19 @@ function setupTokenImages (tok) {
         callback: (html) => {
           const urlsText = html.find('#urls-text')[0].value
           actor.setFlag(SCOPE, KEY_OPTIONS, urlsText)
-          if (actor.getFlag(SCOPE, KEY_CURRENT_INDEX) === undefined) tok.actor.setFlag(SCOPE, KEY_CURRENT_INDEX, 0)
+          if (actor.getFlag(SCOPE, KEY_CURRENT_INDEX) === undefined)
+            tok.actor.setFlag(SCOPE, KEY_CURRENT_INDEX, 0)
           existingUrlsValue = urlsText
           console.log(`Token Image Swap | setting image list for ${actor.name}: ${urlsText}`)
-        }
+        },
       },
       two: {
         icon: '<i class="fas fa-times"></i>',
         label: 'Cancel',
         callback: () => {
           console.log('Token Image Swap | canceled token image setup')
-        }
-      }
+        },
+      },
     },
     // NO DEFAULT - on purpose, to allow Enter key in text input
     // default: 'one',

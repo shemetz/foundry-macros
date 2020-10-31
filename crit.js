@@ -76,6 +76,6 @@ if (!table) {
 const roll = table.roll()
 const rollPart = roll.roll
 const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-resultPart.text = runMacro('make-table-result-bold', resultPart.text)
+resultPart.text = await runMacro('make-table-result-bold', resultPart.text)
 
-table.draw({ roll: rollPart, results: [resultPart] })
+table.draw({roll: rollPart, results: [resultPart]})

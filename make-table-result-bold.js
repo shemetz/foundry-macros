@@ -11,7 +11,11 @@ suggested icon:
 https://i.imgur.com/iw4sH39.png
 */
 
-const text = args[0]
+let text = args[0]
+if (text === null || text === undefined) {
+  ui.notifications.error(`make-table-result-bold should have an argument!`)
+  return ''
+}
 const periodIndex = text.search(/[.!?]/g)
 if (periodIndex === -1)
   return '<b>(!)</b>' + text

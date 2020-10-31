@@ -11,12 +11,24 @@ suggested icon:
 https://i.imgur.com/huPpJQf.png
 */
 
-const table = game.tables.entities.find(t => t.name === 'Critical Fail')
+const getDependency = async (entityMap, packName, entityName) => {
+  const existingEntity = entityMap.entities.find(t => t.name === entityName)
+  if (existingEntity) return existingEntity
+  const pack = game.packs.find(p => p.title === packName)
+  const inIndex = pack.index.find(it => it.name === entityName)
+  return inIndex ? pack.getEntity(inIndex._id) : null
+}
 
+const runMacro = async (macroName, ...args) => {
+  const macro = (await getDependency(game.macros, 'itamacros', macroName))
+  if (macro === null) return ui.notifications.error(`can't find macro: "${macroName}"`)
+  return macro.renderContent(...args)
+}
+
+const table = await getDependency(game.tables, 'Critical Hits', 'Critical Fail')
 const roll = table.roll()
-
 const rollPart = roll.roll
 const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-resultPart.text = game.macros.getName('make-table-result-bold').renderContent(resultPart.text)
+resultPart.text = await runMacro('make-table-result-bold', resultPart.text)
 
 table.draw({ roll: rollPart, results: [resultPart] })

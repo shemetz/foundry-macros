@@ -21,13 +21,13 @@ async function main () {
     {
       _id: tokens[0].data._id,
       x: tokens[1].data.x,
-      y: tokens[1].data.y
+      y: tokens[1].data.y,
     },
     {
       _id: tokens[1].data._id,
       x: tokens[0].data.x,
-      y: tokens[0].data.y
-    }
+      y: tokens[0].data.y,
+    },
   ]
 
   await canvas.scene.updateEmbeddedEntity('Token', updates)

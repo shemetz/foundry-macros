@@ -14,17 +14,26 @@ https://i.imgur.com/Pr6tXUH.png
 
 const CRIT_TYPES = ['Bludgeoning', 'Piercing', 'Slashing', 'Fire', 'Acid', 'Cold', 'Force', 'Poison', 'Lightning', 'Necrotic', 'Psychic', 'Thunder', 'Radiant', 'Insanity', 'Minor Injury', 'Major Injury']
 
-const callback = (tableName) => {
-  console.log('selected crit type', tableName)
-  const table = game.tables.entities.find(t => t.name === tableName)
-  const roll = table.roll()
-  const rollPart = roll.roll
-  const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-  resultPart.text = game.macros.getName('make-table-result-bold').renderContent(resultPart.text)
-  table.draw({ roll: rollPart, results: [resultPart] })
+const getDependency = async (entityMap, packName, entityName) => {
+  const existingEntity = entityMap.entities.find(t => t.name === entityName)
+  if (existingEntity) return existingEntity
+  const pack = game.packs.find(p => p.title === packName)
+  const inIndex = pack.index.find(it => it.name === entityName)
+  return inIndex ? pack.getEntity(inIndex._id) : null
 }
 
-game.macros.getName('query-from-list').renderContent(
+const runMacro = async (macroName, ...args) => {
+  const macro = (await getDependency(game.macros, 'itamacros', macroName))
+  if (macro === null) return ui.notifications.error(`can't find macro: "${macroName}"`)
+  return macro.renderContent(...args)
+}
+
+const callback = (tableName) => {
+  console.log('selected crit type', tableName)
+  runMacro('crit', tableName)
+}
+
+runMacro('query-from-list',
   'Critical Hit',
   'Choose critical type:',
   callback,

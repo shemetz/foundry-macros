@@ -17,7 +17,7 @@ const hook_data_key = 'hook_id_for_turn_to_face'
 
 main()
 
-function main () {
+function main() {
   if (canvas.tokens.controlled.length === 0) {
     return ui.notifications.error('You need to select at least one token to be the turner.')
   }
@@ -28,7 +28,7 @@ function main () {
     if (existing_hook !== undefined && existing_hook !== null) {
       detachedTokenNames.push(turner.name)
       Hooks.off('updateToken', existing_hook)
-      turner.update({ [hook_data_key]: null })
+      turner.update({[hook_data_key]: null})
     }
   }
   if (detachedTokenNames.length > 0)
@@ -62,11 +62,11 @@ function main () {
     // (locking to prevent refresh on hover)
     turner.data.locked = true
     CanvasAnimation.animateLinear(
-      [{ parent: turner.icon, attribute: 'rotation', to: rotationTowards },],
-      { name: `Token.${turner.id}.turnToFace`, context: turner, duration: duration })
+      [{parent: turner.icon, attribute: 'rotation', to: rotationTowards},],
+      {name: `Token.${turner.id}.turnToFace`, context: turner, duration: duration})
       .then(() => {
         // when animation is done we'll update the data
-        return turner.update({ 'rotation': rotationTowards * toDegrees })
+        return turner.update({'rotation': rotationTowards * toDegrees})
       })
       .then(() => {
         // (unlocking))
@@ -90,7 +90,7 @@ function main () {
       turn(turner, target)
     })
 
-    turner.update({ [hook_data_key]: hook_id })
+    turner.update({[hook_data_key]: hook_id})
     turn(turner, target)
   }
 }

@@ -20,9 +20,10 @@ const callback = args[2]
 const queryOptions = args.slice(3)
 
 if (!queryTitle || !queryText || !callback || !queryOptions) {
-  console.error('query-from-list arguments should be (queryTitle, queryText, callback, ...queryOptions)')
-  ui.notifications.error('query-from-list arguments should be (queryTitle, queryText, callback, ...queryOptions)')
-  return
+  return ui.notifications.error(
+    `query-from-list arguments should be (queryTitle, queryText, callback, ...queryOptions),` +
+    `but yours are: ${queryTitle}, ${queryText}, ${callback}, ${queryOptions}`,
+  )
 }
 
 let template = `
@@ -48,7 +49,7 @@ new Dialog({
         const selectedOption = html.find('#selectedOption')[0].value
         console.log('selected option', selectedOption)
         callback(selectedOption)
-      }
+      },
     },
     cancel: {
       icon: '<i class="fas fa-times"></i>',
@@ -56,8 +57,8 @@ new Dialog({
       callback: async (html) => {
         console.log('canceled')
         callback(null)
-      }
-    }
+      },
+    },
   },
-  default: 'cancel'
+  default: 'cancel',
 }).render(true)

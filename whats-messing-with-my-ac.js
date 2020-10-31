@@ -10,7 +10,7 @@ https://i.imgur.com/ec2xL28.png
 
 main()
 
-function main () {
+function main() {
   const tok = canvas.tokens.controlled[0]
   if (!tok) return ui.notifications.error('You must select a token!')
   const affectingItems = tok.actor.items.filter(it =>

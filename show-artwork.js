@@ -1,6 +1,6 @@
 /*
 --- Show Artwork ---
-Show artwork of selected token to yourself (GM can show to all players).
+Show artwork of selected/targeted token to yourself (GM can show to all players).
 
 source:
 https://github.com/itamarcu/foundry-macros/blob/master/show-artwork.js
@@ -10,13 +10,14 @@ https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/2
 
 main()
 
-function main () {
-  const tok = canvas.tokens.controlled[0]
-  if (tok === undefined) return ui.notifications.warn('Please select token first.')
+function main() {
+  const tok = canvas.tokens.controlled[0] || Array.from(game.user.targets)[0]
+  if (tok === undefined)
+    return ui.notifications.warn('Please select token first.')
   let tActor = tok.actor
   new ImagePopout(tActor.data.img, {
     title: tActor.name,
     shareable: true,
-    uuid: tActor.uuid
+    uuid: tActor.uuid,
   }).render(true)
 }

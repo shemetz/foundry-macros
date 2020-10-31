@@ -30,6 +30,21 @@ const LIGHT_OPTIONS = {
   'Lantern - Hooded, bright': [30, 60],
 }
 
+const getDependency = async (entityMap, packName, entityName) => {
+  const existingEntity = entityMap.entities.find(t => t.name === entityName)
+  if (existingEntity) return existingEntity
+  const pack = game.packs.find(p => p.title === packName)
+  const inIndex = pack.index.find(it => it.name === entityName)
+  return inIndex ? pack.getEntity(inIndex._id) : null
+}
+
+const runMacro = async (macroName, ...args) => {
+  const macro = (await getDependency(game.macros, 'itamacros', macroName))
+  if (macro === null) return ui.notifications.error(
+    `can't find macro: "${macroName}"`)
+  return macro.renderContent(...args)
+}
+
 const setVision = (visionStr) => {
   const vision = VISION_OPTIONS[visionStr]
   if (!vision)
@@ -57,18 +72,19 @@ const setLight = (lightStr) => {
   }
 }
 
-const selectedTokenNames = canvas.tokens.controlled.map((it) => {return it.name}).join(', ')
+const selectedTokenNames = canvas.tokens.controlled.map(
+  (it) => {return it.name}).join(', ')
 
-game.macros.getName('query-from-list').renderContent(
+runMacro('query-from-list',
   'Selected tokens: ' + selectedTokenNames,
   'Vision:',
   setVision,
-  ...Object.keys(VISION_OPTIONS)
+  ...Object.keys(VISION_OPTIONS),
 )
 
-game.macros.getName('query-from-list').renderContent(
+runMacro('query-from-list',
   'Selected tokens: ' + selectedTokenNames,
   'Light:',
   setLight,
-  ...Object.keys(LIGHT_OPTIONS)
+  ...Object.keys(LIGHT_OPTIONS),
 )
