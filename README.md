@@ -43,7 +43,7 @@ For all selected tokens, names will be shown and bars will be hidden.
 For all selected tokens, names will be hidden (except owner hover) and bars will be hidden.
 
 ### <img src=https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/252/framed-picture_1f5bc.png height="24"> [Show Artwork](show-artwork.js) 
-Show artwork of selected token to yourself (GM can show to all players).
+Show artwork of selected/targeted token to yourself (GM can show to all players).
 
 ### <img src=https://reprog.files.wordpress.com/2011/01/1d8.png height="24"> [Spend Hit Die](spend-hit-die.js) (5e) 
 This will spend your highest remaining hit die, rolling it and showing the result in the chat (not adding Constitution).
@@ -74,8 +74,11 @@ Will open a dialog for the user to select an option, and call a callback when it
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/error](error.js) 
 Display an error message in the chat and console log. This is just a convenience method.
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/me](me.js) 
-Allows using /me to type italics text.
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/i](i.js) 
+Allows using /i to type italics text.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/print-id](print-id.js) 
+Creates a private chat message with the ID of the currently selected token or tile.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/make-table-result-bold](make-table-result-bold.js) (5e homebrew) 
 Converts text from crit tables to make the first sentence bold.
