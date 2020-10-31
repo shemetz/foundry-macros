@@ -21,7 +21,7 @@ https://i.imgur.com/sOQZ4Ix.png
 
 const level = args[0]
 const isDoublecast = args[1] ? true : false
-const dnd5e = game.macros.getName('dnd5he').renderContent()
+const dnd5e = CONFIG.DND5E
 
 function i18n (key) {
   return game.i18n.localize(key)
