@@ -85,3 +85,6 @@ Rolls a crit from one of the expanded critical tables (required as Rollable Tabl
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/reckless-cast](reckless-cast.js) (5e homebrew)
 A macro created for my character, Shent, who casts random spells as a modified UA invention/chaos wizard.
+
+# Compendiums
+`itamacros.db` is a compendium of all of these macros.  The dependencies of macros used here are all based on either having this compendium or having the dependency macros in your world.
