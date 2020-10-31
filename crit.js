@@ -16,7 +16,7 @@ suggested icon:
 https://i.imgur.com/iw4sH39.png
 */
 
-const input0 = args[0]
+const input0 = args[0] || 'undefined'
 let input = input0.toLowerCase().trim()
 
 const CRIT_TYPES = [
@@ -44,8 +44,14 @@ const getDependency = async (entityMap, packName, entityName) => {
   const existingEntity = entityMap.entities.find(t => t.name === entityName)
   if (existingEntity) return existingEntity
   const pack = game.packs.find(p => p.title === packName)
-  const id = pack.index.find(it => it.name === entityName)._id
-  return pack.getEntity(id)
+  const inIndex = pack.index.find(it => it.name === entityName)
+  return inIndex ? pack.getEntity(inIndex._id) : null
+}
+
+const runMacro = async (macroName, ...args) => {
+  const macro = (await getDependency(game.macros, 'itamacros', macroName))
+  if (macro === null) return ui.notifications.error(`can't find macro: "${macroName}"`)
+  return macro.renderContent(...args)
 }
 
 let critType = null
@@ -57,22 +63,19 @@ for (const crit of CRIT_TYPES) {
 }
 
 if (critType === null)
-  return `/error "You should pick a crit type from: ${CRIT_TYPES.join(', ')}"`
+  return runMacro('error', `You should pick a crit type from: ${CRIT_TYPES.join(', ')}`)
 
 if (critType === 'Failure' || critType === 'Critical Fumble')
-  return '/critfail'
+  return runMacro('critfail')
 
 const table = await getDependency(game.tables, 'Critical Hits', critType)
 if (!table) {
-  return `/error "Failed using ${input} crit - make sure you have the Critical Hits compendium"`
+  return runMacro('error', `Failed using ${input} crit - make sure you have the Critical Hits compendium`)
 }
 
 const roll = table.roll()
 const rollPart = roll.roll
 const resultPart = Object.assign({}, roll.results[0]) // copy, otherwise we edit original table! :O
-const macro = await getDependency(
-  game.macros, 'itamacros', 'make-table-result-bold'
-)
-resultPart.text = macro.renderContent(resultPart.text)
+resultPart.text = runMacro('make-table-result-bold', resultPart.text)
 
 table.draw({ roll: rollPart, results: [resultPart] })
