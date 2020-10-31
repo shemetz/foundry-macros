@@ -1,12 +1,12 @@
 /*
---- me ---
-Allows using /me to type italics text.
+--- i ---
+Allows using /i to type italics text.
 
 args:
   0+ words, which will be concatenated. You should wrap them with " if you're calling this via chat.
 
 source:
-https://github.com/itamarcu/foundry-macros/blob/master/me.js
+https://github.com/itamarcu/foundry-macros/blob/master/i.js
 suggested icon:
 https://i.imgur.com/iw4sH39.png
 */
