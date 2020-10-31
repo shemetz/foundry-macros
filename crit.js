@@ -29,12 +29,19 @@ for (const crit of CRIT_TYPES) {
   }
 }
 
+if (critType === null)
+  return `/error "You should pick a crit type from: ${CRIT_TYPES.join(', ')}"`
+
 if (critType === 'Failure' || critType === 'Critical Fumble')
   return '/critfail'
 
-const table = game.tables.entities.find(t => t.name === critType)
+let table = game.tables.entities.find(t => t.name === critType)
 if (!table) {
-  return `/error "I'm trying to use /crit but I typed ${input} and got no result. I should have used one of the following strings (or substrings): ${CRIT_TYPES.join(', ')}"`
+  const pack = game.packs.find(p => p.title === "Critical Hits")
+  table = await pack.getEntity(pack.index.find(it => it.name === critType)._id)
+}
+if (!table) {
+  return `/error "Failed using ${input} crit - make sure you have the crit roll tables or compendium of them"`
 }
 
 const roll = table.roll()
