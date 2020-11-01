@@ -91,3 +91,5 @@ A macro created for my character, Shent, who casts random spells as a modified U
 
 # Compendiums
 `itamacros.db` is a compendium of all of these macros.  The dependencies of macros used here are all based on either having this compendium or having the dependency macros in your world.
+
+`critical-hits.db` is a compendium for the critical hit tables per damage type.
