@@ -49,7 +49,7 @@ Show artwork of selected/targeted token to yourself (GM can show to all players)
 This will spend your highest remaining hit die, rolling it and showing the result in the chat (not adding Constitution).
 
 ### <img src=https://i.imgur.com/ec2xL28.png height="24"> [What's Messing with my AC?](whats-messing-with-my-ac.js) (5e) 
-Shows a message that details all items that affect AC on the character (including dynamic effects)
+Shows a message that details all items that affect AC on the character.  Not yet updated to the Active Effects of v0.7.5
 
 ### <img src=https://game-icons.net/icons/ffffff/000000/1x1/delapouite/look-at.svg height="24"> [Turn Selected Towards Cursor](turn-selected-towards-cursor.js) 
 Causes all selected tokens to rotate towards the cursor.
