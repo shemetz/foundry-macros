@@ -18,7 +18,8 @@ const getDependency = async (entityMap, packName, entityName) => {
   const existingEntity = entityMap.entities.find(t => t.name === entityName)
   if (existingEntity) return existingEntity
   const pack = game.packs.find(p => p.title === packName)
-  const inIndex = pack.index.find(it => it.name === entityName)
+  const index = await pack.getIndex()
+  const inIndex = index.find(it => it.name === entityName)
   return inIndex ? pack.getEntity(inIndex._id) : null
 }
 
@@ -29,6 +30,7 @@ const runMacro = async (macroName, ...args) => {
 }
 
 const callback = (tableName) => {
+  if (tableName === null) return
   console.log('selected crit type', tableName)
   runMacro('crit', tableName)
 }
