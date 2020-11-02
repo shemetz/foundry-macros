@@ -11,7 +11,7 @@ https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/2
 main()
 
 function main() {
-  const latestImagePopout = game.user.apps['show-artwork']
+  const latestImagePopout = game.user.apps['show-artwork'] // yes this is hacky but I don't know better
   if (latestImagePopout !== undefined) latestImagePopout.close()
   const tok = canvas.tokens.controlled[0]
     || canvas.tokens.placeables.find(it => it.mouseInteractionManager.state === 1)
