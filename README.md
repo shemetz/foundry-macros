@@ -43,7 +43,7 @@ For all selected tokens, names will be shown and bars will be hidden.
 For all selected tokens, names will be hidden (except owner hover) and bars will be hidden.
 
 ### <img src=https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/252/framed-picture_1f5bc.png height="24"> [Show Artwork](show-artwork.js) 
-Show artwork of selected/targeted token to yourself (GM can show to all players).
+Show artwork of selected/hovered token to yourself (GM can show to all players).
 
 ### <img src=https://reprog.files.wordpress.com/2011/01/1d8.png height="24"> [Spend Hit Die](spend-hit-die.js) (5e) 
 This will spend your highest remaining hit die, rolling it and showing the result in the chat (not adding Constitution).
