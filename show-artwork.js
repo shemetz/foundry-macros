@@ -14,10 +14,10 @@ function main() {
   const tok = canvas.tokens.controlled[0] || Array.from(game.user.targets)[0]
   if (tok === undefined)
     return ui.notifications.warn('Please select token first.')
-  let tActor = tok.actor
-  new ImagePopout(tActor.data.img, {
-    title: tActor.name,
+  let target = tok.actor || tok
+  new ImagePopout(target.data.img, {
+    title: target.name,
     shareable: true,
-    uuid: tActor.uuid,
+    uuid: target.uuid,
   }).render(true)
 }
