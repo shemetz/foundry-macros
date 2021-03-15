@@ -42,6 +42,9 @@ For all selected tokens, names will be shown and bars will be hidden.
 ### <img src=https://i.imgur.com/R8klQVl.png height="24"> [Hide Names, Hide Bars](hide-names-hide-bars.js) 
 For all selected tokens, names will be hidden (except owner hover) and bars will be hidden.
 
+### <img src=https://i.imgur.com/DkNojdN.png height="24"> [Highlight Map Locations](highlight-map-locations.js) 
+For all transparent tokens on the map, lights and visible names will be shown/hidden.
+
 ### <img src=https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/openmoji/252/framed-picture_1f5bc.png height="24"> [Show Artwork](show-artwork.js) 
 Show artwork of selected/hovered token to yourself (GM can show to all players).
 
@@ -76,6 +79,19 @@ Display an error message in the chat and console log. This is just a convenience
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/i](i.js) 
 Allows using /i to type italics text.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/check-crit](check-crit.js) 
+Checks if a BetterRolls5e chat message contains a crit.
+Allows using /i to type italics text.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/item-dir-info](item-dir-info.js) 
+Prints the name, image, and description of an item in the Items Directory to the chat.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/play-sound](i.js) 
+Plays one of the sounds predefined in this macro.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [token-image-shift](token-image-shift.js) 
+Similar to token-image-swap but useful for TriggerHappy automation.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/print-id](print-id.js) 
 Creates a private chat message with the ID of the currently selected token or tile.
