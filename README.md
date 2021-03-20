@@ -8,6 +8,9 @@ Some of these macros have arguments; these macros are meant to be used with the 
 
 Some others have dependencies, which means that they require these other macros to be
  created and added to your macro directory, named the same way as they are here.
+
+Generally, all macros with a cogwheel icon or with a `kebab-case` name are "tool" macros that are expected to be called
+from other macros, from TriggerHappy, or from the chat.
  
 ## List + Summaries
 
@@ -65,12 +68,6 @@ Whenever the turner or the target move, the turner will rotate to face the targe
 
 ![](https://user-images.githubusercontent.com/6516621/93661817-95ca7080-fa63-11ea-87cd-133eb5d576fc.gif)
 
-### <img src=https://i.imgur.com/huPpJQf.png height="24"> [Crit Fail Table](critfail.js) (5e homebrew) 
-Rolls and shows a result from the Critical Fail table (required as a rollable table)
-
-### <img src=https://i.imgur.com/Pr6tXUH.png height="24"> [Crit Table](crit-dialog.js) (5e homebrew)
-Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names)
-
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/query-from-list](query-from-list.js) 
 Will open a dialog for the user to select an option, and call a callback when it's complete.
 
@@ -80,18 +77,40 @@ Display an error message in the chat and console log. This is just a convenience
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/i](i.js) 
 Allows using /i to type italics text.
 
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/treasure-chest](treasure-chest.js)
+TriggerHappy macro - when a player moves a token "into" a treasure chest: the chest will be opened, a sound will be 
+heard, its art will change to show it open, and the item description will be shown in chat.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/secret-wall-lever](secret-wall-lever.js)
+TriggerHappy macro - when a player clicks a lever: the lever will be change its artwork, a sound will be heard, several
+walls will open/close and tiles will hide/unhide or change their image.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/reset-activation-state](reset-activation-state.js)
+Used to "reset" the activation state for the above TriggerHappy macros, when setting things up or debugging.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/look-at-my-art](look-at-my-art.js) 
+Shows a token's artwork in chat.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/door-toggle](door-toggle.js) 
+Opens/closes one door (wall).
+
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/check-crit](check-crit.js) 
 Checks if a BetterRolls5e chat message contains a crit.
-Allows using /i to type italics text.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/toggle-hide](toggle-hide.js) 
+Toggle hide/unhide for a token or tile.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/item-dir-info](item-dir-info.js) 
 Prints the name, image, and description of an item in the Items Directory to the chat.
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/play-sound](i.js) 
+### <img src=https://i.imgur.com/tPNQzq6.png height="24"> [/play-sound](/play-sound.js) 
 Plays one of the sounds predefined in this macro.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [token-image-shift](token-image-shift.js) 
 Similar to token-image-swap but useful for TriggerHappy automation.
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [tile-image-shift](tile-image-shift.js) 
+Similar to token-image-swap but for tiles, for TriggerHappy automation.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/print-id](print-id.js) 
 Creates a private chat message with the ID of the currently selected token or tile.
@@ -99,7 +118,13 @@ Creates a private chat message with the ID of the currently selected token or ti
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/make-table-result-bold](make-table-result-bold.js) (5e homebrew) 
 Converts text from crit tables to make the first sentence bold.
 
-### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/crit](crit.js) (5e homebrew)
+### <img src=https://i.imgur.com/huPpJQf.png height="24"> [Crit Fail Table](critfail.js) (5e homebrew) 
+Rolls and shows a result from the Critical Fail table (required as a rollable table)
+
+### <img src=https://i.imgur.com/Pr6tXUH.png height="24"> [Crit Table](crit-dialog.js) (5e homebrew)
+Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names)
+
+### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/crit](crit.js)
 Rolls a crit from one of the expanded critical tables (required as Rollable Tables with those names).and call a callback when it's complete.
 
 ### <img src=https://i.imgur.com/iw4sH39.png height="24"> [/reckless-cast](reckless-cast.js) (5e homebrew)
