@@ -10,7 +10,7 @@ if arg is 'c'/'cycle' we'll go forward and loop
 if arg is 'uc'/'uncycle' we'll go backwards and loop
 
 source:
-https://github.com/itamarcu/foundry-macros/blob/master/token-image-swap.js
+https://github.com/itamarcu/foundry-macros/blob/master/token-image-shift.js
 suggested icon:
 https://i.imgur.com/iw4sH39.png
 */
@@ -58,7 +58,7 @@ function main() {
         : Math.min(Math.max(imgIndex + delta, 0), options.length - 1)
      : argNum
 
-  if (isNaN(nextIndex) || nextIndex < 0 || nextIndex >= options.length) return ui.notifications.error(`bad token-image-shift input! ${arg}`)
+  if (isNaN(nextIndex) || nextIndex < 0 || nextIndex >= options.length) return ui.notifications.error(`bad token-image-shift input! ${argChange}`)
   const nextImg = optionImgs[nextIndex]
   const nextScale = optionScales[nextIndex]
   tok.update({'img': nextImg, 'scale': nextScale})
