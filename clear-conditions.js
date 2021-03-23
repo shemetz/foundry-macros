@@ -13,5 +13,6 @@ main()
 async function main () {
   for (const token of canvas.tokens.controlled) {
     await token.update({ 'effects': [], 'overlayEffect': '' })
+    if (EffectCounter) EffectCounter.getAllCounters(token).forEach(c => c.remove())
   }
 }
