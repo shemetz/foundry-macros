@@ -4,7 +4,7 @@ A complex macro that combines several other macros, and is meant to be triggered
 - Treats the "toggle activation state" flag as the open/closed state of a chest token.
 - If the chest is already open, nothing will happen (making sure the macro isn't called multiple times in a session).  Otherwise...
 - Chest token will change to look open.
-- "Treasure" sound effect will be played
+- "treasure" sound effect will be played (optional 3rd parameter for a sound effect name)
 - Item description will be shown in chat
 
 Usage in TriggerHappy:
@@ -23,7 +23,7 @@ suggested icon:
 https://i.imgur.com/iw4sH39.png
  */
 
-const chestTokenName = args[0], lootItemNameOrId = args[1]
+const chestTokenName = args[0], lootItemNameOrId = args[1], soundEffectName = args[2] || 'treasure'
 
 const FLAG_SCOPE = 'world'
 const FLAG_KEY_TOGGLE= 'macro-toggle-activation-state'
@@ -43,6 +43,6 @@ function main() {
   chestToken.setFlag(FLAG_SCOPE, FLAG_KEY_TOGGLE, true)
 
   game.macros.getName('token-image-shift').renderContent(chestTokenName, '+')
-  game.macros.getName('play-sound').renderContent('treasure', true)
+  game.macros.getName('play-sound').renderContent(soundEffectName, true)
   game.macros.getName('item-dir-info').renderContent(lootItemNameOrId, tokenName)
 }

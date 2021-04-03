@@ -33,7 +33,7 @@ const LIGHT_OPTIONS = {
 const getDependency = async (entityMap, packName, entityName) => {
   const existingEntity = entityMap.entities.find(t => t.name === entityName)
   if (existingEntity) return existingEntity
-  const pack = game.packs.find(p => p.title === packName)
+  const pack = game.packs.find(p => p.title.includes(packName))
   const index = await pack.getIndex()
   const inIndex = index.find(it => it.name === entityName)
   return inIndex ? pack.getEntity(inIndex._id) : null
